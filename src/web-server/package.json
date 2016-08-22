@@ -1,0 +1,25 @@
+{
+  "name": "ka-web-server",
+  "version": "1.0.0",
+  "description": "Web server for Killer App Console",
+  "main": "server.js",
+  "dependencies": {
+    "connect": "^3.4.1",
+    "serve-static": "^1.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zverevalexei/trex-http-proxy.git"
+  },
+  "author": "Alexei Zverev (alzverev@cisco.com)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/zverevalexei/trex-http-proxy/issues"
+  },
+  "homepage": "https://github.com/zverevalexei/trex-http-proxy#readme"
+}

@@ -1,0 +1,81 @@
+<div class=" h100" flex layout-fill>
+
+	<form name="settingsForm">
+
+		<div layout="column">
+
+			<div layout="row" layout-fill>
+				<md-card md-theme="default" md-theme-watch flex >
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">VPP Traffic Generator Settings</span>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-sm card-media">
+								<img src="media/img/logo_fdio.png" title="OVS logo">
+							</div>
+						</md-card-title-media>
+					</md-card-title>
+					<md-card-content flex>
+
+						<div layout="column" class="dashboard-section">
+
+							<md-input-container>
+								<label for="settingsForm.vpp.url">TRex proxy URL</label>
+								<input name="settingsForm.vpp.url" id="settingsForm.vpp.url" ng-model="settingsData.vpp.url">
+							</md-input-container>
+
+							<md-input-container>
+								<label for="settingsForm.vpp.mac_dest">Traffic destination's MAC address</label>
+								<input name="settingsForm.vpp.mac_dest" id="settingsForm.vpp.mac_dest" ng-model="settingsData.vpp.mac_dest">
+							</md-input-container>
+
+						</div>
+
+					</md-card-content>
+				</md-card>
+
+				<md-card md-theme="default" md-theme-watch flex >
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">OVS Traffic Generator Settings</span>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-sm card-media">
+								<img src="media/img/logo_ovs.png" title="OVS logo">
+							</div>
+						</md-card-title-media>
+					</md-card-title>
+					<md-card-content flex>
+
+						<div layout="column" class="dashboard-section">
+
+							<md-input-container>
+								<label for="settingsForm.ovs.url">TRex proxy URL</label>
+								<input name="settingsForm.ovs.url" id="settingsForm.ovs.url" ng-model="settingsData.ovs.url">
+							</md-input-container>
+
+							<md-input-container>
+								<label for="settingsForm.ovs.mac_dest">Traffic destination's MAC address</label>
+								<input name="settingsForm.ovs.mac_dest" id="settingsForm.ovs.mac_dest" ng-model="settingsData.ovs.mac_dest">
+							</md-input-container>
+
+						</div>
+
+					</md-card-content>
+				</md-card>
+
+
+			</div>
+
+
+			<div layout="row" layout-fill flex>
+				<div class="footer-filler"></div>
+			</div>
+		</div>
+
+
+	</form>
+
+
+</div>

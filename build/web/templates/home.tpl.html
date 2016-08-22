@@ -1,0 +1,206 @@
+<md-content class="home-screen-wrapper h100" flex layout-fill>
+
+	<md-content layout="column">
+
+		<div layout="row">
+
+			<md-card md-theme="default" md-theme-watch flex>
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">Traffic Generator Console</span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content flex>
+
+
+					<div layout="row">
+						<div class="dashboard-section" flex>
+							<div>Set up packet size (bytes):</div>
+							<md-input-container>
+								<label for="packetSize">Packet size</label>
+								<input type="number" id="packetSize" ng-model="packetSize">
+							</md-input-container>
+						</div>
+						<div class="dashboard-section">
+							<div>Specify multiplier:</div>
+							<md-input-container>
+								<label for="ppsMult">Multiplier</label>
+								<input type="number" id="ppsMult" ng-model="ppsMult">
+							</md-input-container>
+						</div>
+					</div>
+
+					<div class="dashboard-section">
+						MAC addresses per second: <span ng-click="setMacVolume">{{ macsPerSec }}</span>
+						<md-slider min="0" max="85000" ng-model="macsPerSec" aria-label="Adjust number of MAC addresses per second" class="big-slider"></md-slider>
+					</div>
+				</md-card-content>
+				<md-card-actions layout="row" layout-align="start center">
+
+					<!-- Resume -->
+					<md-button class="md-primary"
+							   ng-click="updatePps(true)"
+							   ng-hide="shared.tgStatus.vpp === 'running' || shared.tgStatus.ovs == 'running' || macsPerSec == 0">
+						<i class="fa fa-play-circle" aria-hidden="true"></i>
+						Resume
+					</md-button>
+					<!-- Pause -->
+					<md-button class="md-primary"
+							   ng-click="pauseTraffic()"
+							   ng-show="shared.tgStatus.vpp === 'running' || shared.tgStatus.ovs == 'running'">
+						<i class="fa fa-pause-circle-o" aria-hidden="true"></i>
+						Pause
+					</md-button>
+				</md-card-actions>
+			</md-card>
+		</div>
+
+
+		<div layout="row" layout-fill>
+
+			<md-card md-theme="default" class="monitor-card" md-theme-watch flex >
+				<div layout="row" class="monitor-card-header w100">
+					<div class="monitor-card-header-picture"><img src="media/img/logo_fdio.png" title="VPP logo"></div>
+					<div class="monitor-card-header-title" flex>VPP Traffic Generator Monitor</div>
+				</div>
+				<md-card-content flex>
+
+					<div layout="column" class="dashboard-section">
+
+						<div class="dashboard-section-label">Status</div>
+						<div class="dashboard-section-meat">
+							<span ng-show="shared.tgStatus.vpp == 'running'" class="status-running">
+								<i class="fa fa-play-circle" aria-hidden="true"></i> running
+							</span>
+							<span ng-show="shared.tgStatus.vpp == 'stopped'" class="status-stopped">
+								<i class="fa fa-stop-circle-o" aria-hidden="true"></i> stopped
+							</span>
+							<span ng-show="shared.tgStatus.vpp == 'starting'" class="status-starting">
+								<i class="fa fa-refresh fa-spin fa-fw" aria-hidden="true"></i> starting...
+							</span>
+							<span ng-show="shared.tgStatus.vpp == 'updating'" class="status-updating">
+								<i class="fa fa-refresh fa-spin fa-fw" aria-hidden="true"></i> updating...
+							</span>
+							<span ng-show="shared.tgStatus.vpp == 'not_connected'" class="status-not_connected">
+								 <i class="fa fa-chain-broken" aria-hidden="true"></i> not connected
+							</span>
+							<span ng-show="shared.tgStatus.vpp === null" class="status-not_available">
+								<i class="fa fa-ban" aria-hidden="true"></i> N/A
+							</span>
+						</div>
+
+						<div class="dashboard-section-label">Traffic volume</div>
+						<div class="dashboard-section-meat">
+							<div ng-show="shared.tgStatus.vpp == 'running'">
+								<div>{{ shared.tgStats.vpp.global['tx_pps'] | number : 1 }} <span class="dashboard-section-meat-units">pkts/s</span></div>
+								<div>{{ shared.tgStats.vpp.global['tx_bps_value'] | number : 1 }} <span class="dashboard-section-meat-units">{{ shared.tgStats.vpp.global['tx_bps_units'] }}</span></div>
+							</div>
+							<div ng-hide="shared.tgStatus.vpp == 'running'">
+								N/A
+							</div>
+						</div>
+
+						<!--<div class="dashboard-section-label">Drop rate</div>-->
+						<!--<div class="dashboard-section-meat">-->
+							<!--<div ng-show="shared.tgStatus.vpp == 'running'">-->
+								<!--<div>{{ shared.tgStats.vpp.global['rx_drop_bps'] | number : 1 }} <span class="dashboard-section-meat-units">b/s</span> (100%)</div>-->
+							<!--</div>-->
+							<!--<div ng-hide="shared.tgStatus.vpp == 'running'">-->
+								<!--N/A-->
+							<!--</div>-->
+						<!--</div>-->
+
+						<!--<div class="dashboard-section-label">Flows</div>-->
+						<!--<div class="dashboard-section-meat">-->
+							<!--<div ng-show="shared.tgStatus.vpp == 'running'">-->
+								<!--<div>{{ (shared.tgStats.vpp.global['tx_bps'] - shared.tgStats.vpp.global['rx_drop_bps']) | number : 1 }} <span class="dashboard-section-meat-units">b/s</span></div>-->
+							<!--</div>-->
+							<!--<div ng-hide="shared.tgStatus.vpp == 'running'">-->
+								<!--N/A-->
+							<!--</div>-->
+						<!--</div>-->
+
+					</div>
+
+				</md-card-content>
+			</md-card>
+
+			<md-card md-theme="default" class="monitor-card" md-theme-watch flex>
+				<div layout="row" class="monitor-card-header w100">
+					<div class="monitor-card-header-picture"><img src="media/img/logo_ovs.png" title="OVS logo"></div>
+					<div class="monitor-card-header-title" flex>OVS Traffic Generator Monitor</div>
+				</div>
+				<md-card-content flex>
+
+					<div layout="column" class="dashboard-section">
+
+						<div class="dashboard-section-label">Status</div>
+						<div class="dashboard-section-meat">
+							<span ng-show="shared.tgStatus.ovs == 'running'" class="status-running">
+								<i class="fa fa-play-circle" aria-hidden="true"></i> running
+							</span>
+							<span ng-show="shared.tgStatus.ovs == 'stopped'" class="status-stopped">
+								<i class="fa fa-stop-circle-o" aria-hidden="true"></i> stopped
+							</span>
+							<span ng-show="shared.tgStatus.ovs == 'starting'" class="status-starting">
+								<i class="fa fa-refresh fa-spin fa-fw" aria-hidden="true"></i> starting...
+							</span>
+							<span ng-show="shared.tgStatus.ovs == 'updating'" class="status-updating">
+								<i class="fa fa-refresh fa-spin fa-fw" aria-hidden="true"></i> updating...
+							</span>
+							<span ng-show="shared.tgStatus.ovs == 'not_connected'" class="status-not_connected">
+								 <i class="fa fa-chain-broken" aria-hidden="true"></i> not connected
+							</span>
+							<span ng-show="shared.tgStatus.ovs === null" class="status-not_available">
+								<i class="fa fa-ban" aria-hidden="true"></i> N/A
+							</span>
+						</div>
+
+						<div class="dashboard-section-label">Traffic volume</div>
+						<div class="dashboard-section-meat">
+							<div ng-show="shared.tgStatus.ovs == 'running'">
+								<div>{{ shared.tgStats.ovs.global['tx_pps'] | number : 1 }} <span class="dashboard-section-meat-units">pkts/s</span></div>
+								<div>{{ shared.tgStats.ovs.global['tx_bps_value'] | number : 1 }} <span class="dashboard-section-meat-units">{{ shared.tgStats.ovs.global['tx_bps_units'] }}</span></div>
+							</div>
+							<div ng-hide="shared.tgStatus.ovs == 'running'">
+								N/A
+							</div>
+						</div>
+
+						<!--<div class="dashboard-section-label">Drop rate</div>-->
+						<!--<div class="dashboard-section-meat">-->
+							<!--<div ng-show="shared.tgStatus.ovs == 'running'">-->
+								<!--<div>{{ shared.tgStats.ovs.global['rx_drop_bps'] | number : 1 }} <span class="dashboard-section-meat-units">b/s</span> (100%)</div>-->
+							<!--</div>-->
+							<!--<div ng-hide="shared.tgStatus.ovs == 'running'">-->
+								<!--N/A-->
+							<!--</div>-->
+						<!--</div>-->
+
+						<!--<div class="dashboard-section-label">Flows</div>-->
+						<!--<div class="dashboard-section-meat">-->
+							<!--<div ng-show="shared.tgStatus.ovs == 'running'">-->
+								<!--<div>{{ (shared.tgStats.ovs.global['tx_bps'] - shared.tgStats.ovs.global['rx_drop_bps']) | number : 1 }} <span class="dashboard-section-meat-units">b/s</span></div>-->
+							<!--</div>-->
+							<!--<div ng-hide="shared.tgStatus.ovs == 'running'">-->
+								<!--N/A-->
+							<!--</div>-->
+						<!--</div>-->
+
+					</div>
+				</md-card-content>
+			</md-card>
+
+		</div>
+
+
+		<div layout="row" layout-fill flex>
+			<div class="footer-filler"></div>
+		</div>
+	</md-content>
+
+
+
+
+
+</md-content>

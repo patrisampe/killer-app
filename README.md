@@ -1,1 +1,2 @@
-# killer-app
+# killer-app-console
+Killer App

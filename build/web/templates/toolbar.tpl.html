@@ -1,0 +1,20 @@
+<md-toolbar class="toolbar-main" ng-controller="ToolbarCtrl">
+	<div class="md-toolbar-tools toolbar-main">
+					<span class="product-label">
+						<img src="media/img/logo_cisco.png" title="Cisco">
+					</span>
+		<md-button ng-click="setUrlHash('/')" ng-class="{'selected-item': shared.currentCtrl === 'HomeCtrl'}">
+			<i class="fa fa-home" aria-hidden="true"></i>
+			Home
+		</md-button>
+		<md-button ng-click="setUrlHash('/settings')" ng-class="{'selected-item': shared.currentCtrl === 'SettingsCtrl'}">
+			<i class="fa fa-wrench" aria-hidden="true"></i>
+			Settings
+		</md-button>
+		<md-button ng-click="redirectUrl('http://cisco.com/')">
+			<i class="fa fa-external-link" aria-hidden="true"></i>
+			Horizon Console
+		</md-button>
+		<span flex></span>
+	</div>
+</md-toolbar>
