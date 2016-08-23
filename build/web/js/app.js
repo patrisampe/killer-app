@@ -740,11 +740,11 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 			var lastStatus = SharedDataService.data.tgStatus;
 
 			if(explicitUpdate){
-				SharedDataService.data.tgStatus.vpp = SharedDataService.data.tgStatus.ovs = 'updating';
+				SharedDataService.data.tgStatus.vpp = SharedDataService.data.tgStatus.ovs = SharedDataService.data.tgStatus.dvs  = 'updating';
 			}
 
 			if(HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["vpp", "url"])
-			&& HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["ovs", "url"])){
+			&& HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["ovs", "url"]) && HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["dvs", "url"])){
 
 				// get status VPP
 				TrexService.getStatus(
@@ -758,6 +758,13 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 					SharedDataService.data.proxyConfig.ovs.url,
 					returnSuccessCbkForGetStatus("ovs"),
 					returnErrorCbkForGetStatus("ovs")
+				);
+
+				<!-- patricia: add dvs -->
+				TrexService.getStatus(
+					SharedDataService.data.proxyConfig.dvs.url,
+					returnSuccessCbkForGetStatus("dvs"),
+					returnErrorCbkForGetStatus("dvs")
 				);
 
 			}
@@ -847,6 +854,12 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 						returnSuccessCbkForStop("ovs"),
 						returnErrorCbkForStop("ovs")
 					);
+					<!-- patricia: add dvs -->
+					TrexService.stop(
+						SharedDataService.data.proxyConfig.dvs.url,
+						returnSuccessCbkForStop("dvs"),
+						returnErrorCbkForStop("dvs")
+					);
 
 				}
 
@@ -921,6 +934,15 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 					ErrorHandlerService.log(err, true);
 				}
 			);
+			<!-- patricia: add dvs -->
+			TrexService.stop(
+				SharedDataService.data.proxyConfig.dvs.url,
+				function(data){},
+				function(err){
+					ErrorHandlerService.log(err, true);
+				}
+			);
+
 
 		}
 
@@ -967,6 +989,9 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 			// fixme: make dynamic
 			SharedDataService.data.restBaseUrls.vpp = "http://localhost:5000";
 			SharedDataService.data.restBaseUrls.ovs = "http://localhost:6000";
+
+			<!-- patricia: add dvs -->
+			SharedDataService.data.restBaseUrls.dvs = "http://localhost:7000";
 
 		}
 

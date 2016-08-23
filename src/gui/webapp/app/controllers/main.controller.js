@@ -35,6 +35,9 @@
 			SharedDataService.data.restBaseUrls.vpp = "http://localhost:5000";
 			SharedDataService.data.restBaseUrls.ovs = "http://localhost:6000";
 
+			<!-- patricia: add dvs -->
+			SharedDataService.data.restBaseUrls.dvs = "http://localhost:7000";
+
 		}
 
 		function configWatcher(proxyConfig){

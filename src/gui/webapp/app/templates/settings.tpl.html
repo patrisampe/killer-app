@@ -38,6 +38,36 @@
 				<md-card md-theme="default" md-theme-watch flex >
 					<md-card-title>
 						<md-card-title-text>
+							<span class="md-headline">DVS Traffic Generator Settings</span>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-sm card-media">
+								<img src="media/img/dvs_logo.png" title="OVS logo">
+							</div>
+						</md-card-title-media>
+					</md-card-title>
+					<md-card-content flex>
+
+						<div layout="column" class="dashboard-section">
+
+							<md-input-container>
+								<label for="settingsForm.ovs.url">TRex proxy URL</label>
+								<input name="settingsForm.ovs.url" id="settingsForm.ovs.url" ng-model="settingsData.ovs.url">
+							</md-input-container>
+
+							<md-input-container>
+								<label for="settingsForm.ovs.mac_dest">Traffic destination's MAC address</label>
+								<input name="settingsForm.ovs.mac_dest" id="settingsForm.ovs.mac_dest" ng-model="settingsData.ovs.mac_dest">
+							</md-input-container>
+
+						</div>
+
+					</md-card-content>
+				</md-card>
+
+				<md-card md-theme="default" md-theme-watch flex >
+					<md-card-title>
+						<md-card-title-text>
 							<span class="md-headline">OVS Traffic Generator Settings</span>
 						</md-card-title-text>
 						<md-card-title-media>
