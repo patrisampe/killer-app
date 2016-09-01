@@ -55,7 +55,8 @@
 			}
 
 			if(HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["vpp", "url"])
-			&& HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["ovs", "url"]) && HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["dvs", "url"])){
+			&& HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["ovs", "url"])
+			&& HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["dvs", "url"])){
 
 				// get status VPP
 				TrexService.getStatus(

@@ -345,10 +345,10 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 				if(sourceObj.hasOwnProperty("vpp") && sourceObj.hasOwnProperty("ovs")){
 
 					if(typeof sourceObj.vpp === "object" && sourceObj.vpp !== null
-					&& typeof sourceObj.ovs === "object" && sourceObj.ovs !== null){
+					&& typeof sourceObj.ovs === "object" && sourceObj.ovs !== null && typeof sourceObj.dvs === "object" && sourceObj.dvs !== null){
 
 						if(sourceObj.vpp.hasOwnProperty("mac_dest") && sourceObj.vpp.hasOwnProperty("url")
-						&& sourceObj.ovs.hasOwnProperty("mac_dest") && sourceObj.ovs.hasOwnProperty("url")){
+						&& sourceObj.ovs.hasOwnProperty("mac_dest") && sourceObj.ovs.hasOwnProperty("url") && sourceObj.dvs.hasOwnProperty("mac_dest") && sourceObj.dvs.hasOwnProperty("url")){
 							// todo: validation
 
 							resultObj = angular.copy(sourceObj);
@@ -744,7 +744,8 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 			}
 
 			if(HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["vpp", "url"])
-			&& HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["ovs", "url"]) && HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["dvs", "url"])){
+			&& HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["ovs", "url"])
+			&& HelpersService.hasOwnPropertiesPath(SharedDataService.data.proxyConfig, ["dvs", "url"])){
 
 				// get status VPP
 				TrexService.getStatus(
