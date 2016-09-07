@@ -8,6 +8,7 @@
 		$scope.updateStatus = updateStatus;
 		$scope.updatePps = updatePps;
 		$scope.pauseTraffic = pauseTraffic;
+		$scope.show3="false";
 
 		$scope.macsPerSec = 0;
 		$scope.lastSetMacsPerSec = 0;

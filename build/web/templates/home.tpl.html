@@ -1,4 +1,4 @@
-<md-content class="home-screen-wrapper h100" flex layout-fill>
+<md-content class="home-screen-wrapper h100" flex layout-fill ng-controller="HomeCtrl">
 
 	<md-content layout="column">
 
@@ -193,7 +193,7 @@
 				</md-card-content>
 			</md-card>
 
-			<md-card md-theme="default" class="monitor-card" md-theme-watch flex>
+			<md-card md-theme="default" class="monitor-card" ng-show="show3" md-theme-watch flex>
 				<div layout="row" class="monitor-card-header w100">
 					<div class="monitor-card-header-picture"><img src="media/img/logo_ovs.png" title="OVS logo"></div>
 					<div class="monitor-card-header-title" flex>OVS Traffic Generator Monitor</div>

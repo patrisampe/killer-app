@@ -7,6 +7,9 @@
 		$scope.redirectUrl = redirectUrl;
 		$scope.init = init;
 
+
+
+
 		$scope.init();
 
 

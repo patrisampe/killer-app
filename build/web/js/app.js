@@ -697,6 +697,7 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 		$scope.updateStatus = updateStatus;
 		$scope.updatePps = updatePps;
 		$scope.pauseTraffic = pauseTraffic;
+		$scope.show3="false";
 
 		$scope.macsPerSec = 0;
 		$scope.lastSetMacsPerSec = 0;
@@ -962,6 +963,9 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 		$scope.shared = SharedDataService.data;
 		$scope.redirectUrl = redirectUrl;
 		$scope.init = init;
+
+
+
 
 		$scope.init();
 
