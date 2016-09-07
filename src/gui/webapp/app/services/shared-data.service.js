@@ -21,14 +21,14 @@
 			flowsNumber: null,
 			// status of traffic generator (running/stopped)
 			tgStatus: {
-				"vpp": null,
-				"ovs": null,
+				"vpp":null,
+				"ovs":null,
 				"dvs":null
 			},
 			tgStats: {
 				"vpp": null,
 				"ovs": null,
-				"dvs":null
+				"dvs": null
 			},
 			// current ctrl
 			currentCtrl: null,

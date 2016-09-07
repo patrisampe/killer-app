@@ -83,7 +83,7 @@
 
 			if(typeof sourceObj === "object" && sourceObj !== null){
 
-				if(sourceObj.hasOwnProperty("vpp") && sourceObj.hasOwnProperty("ovs")){
+				if(sourceObj.hasOwnProperty("vpp") && sourceObj.hasOwnProperty("ovs") && sourceObj.hasOwnProperty("dvs")){
 
 					if(typeof sourceObj.vpp === "object" && sourceObj.vpp !== null
 					&& typeof sourceObj.ovs === "object" && sourceObj.ovs !== null
