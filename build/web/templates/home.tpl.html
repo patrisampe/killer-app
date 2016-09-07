@@ -40,14 +40,14 @@
 					<!-- Resume -->
 					<md-button class="md-primary"
 							   ng-click="updatePps(true)"
-							   ng-hide="shared.tgStatus.vpp === 'running' || shared.tgStatus.ovs == 'running' || macsPerSec == 0">
+							   ng-hide="shared.tgStatus.vpp === 'running' || shared.tgStatus.ovs == 'running' || shared.tgStatus.dvs == 'running' || macsPerSec == 0">
 						<i class="fa fa-play-circle" aria-hidden="true"></i>
 						Resume
 					</md-button>
 					<!-- Pause -->
 					<md-button class="md-primary"
 							   ng-click="pauseTraffic()"
-							   ng-show="shared.tgStatus.vpp === 'running' || shared.tgStatus.ovs == 'running'">
+							   ng-show="shared.tgStatus.vpp === 'running' || shared.tgStatus.ovs == 'running' || shared.tgStatus.dvs == 'running'">
 						<i class="fa fa-pause-circle-o" aria-hidden="true"></i>
 						Pause
 					</md-button>
