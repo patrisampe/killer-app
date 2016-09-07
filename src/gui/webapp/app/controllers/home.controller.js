@@ -101,23 +101,23 @@
 						// bits
 						if(tx_bps < 1000){
 							globalStats["tx_bps_value"] = tx_bps;
-							globalStats["tx_bps_units"] = "bit/s";
+							globalStats["tx_bps_units"] = "bitrr/s";
 
 							log.console('try 2');
 						}
 						// kbits
 						else if(tx_bps >= 1000 && tx_bps < 1000000){
 							globalStats["tx_bps_value"] = tx_bps/1000;
-							globalStats["tx_bps_units"] = "kbit/s";
+							globalStats["tx_bps_units"] = "kbitrr/s";
 							log.console('try 3');
 						}
 						else if(tx_bps >= 1000000 && tx_bps < 1000000000){
 							globalStats["tx_bps_value"] = tx_bps/1000000;
-							globalStats["tx_bps_units"] = "mbit/s";
+							globalStats["tx_bps_units"] = "mbitoo/s";
 						}
 						else if(tx_bps >  999999999){
 							globalStats["tx_bps_value"] = tx_bps/1000000000;
-							globalStats["tx_bps_units"] = "gbit/s";
+							globalStats["tx_bps_units"] = "gbituu/s";
 							log.console('try 5');
 						}
 						log.console('try 1');
