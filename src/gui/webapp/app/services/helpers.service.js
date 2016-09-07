@@ -86,10 +86,12 @@
 				if(sourceObj.hasOwnProperty("vpp") && sourceObj.hasOwnProperty("ovs")){
 
 					if(typeof sourceObj.vpp === "object" && sourceObj.vpp !== null
-					&& typeof sourceObj.ovs === "object" && sourceObj.ovs !== null && typeof sourceObj.dvs === "object" && sourceObj.dvs !== null){
+					&& typeof sourceObj.ovs === "object" && sourceObj.ovs !== null
+						&& typeof sourceObj.dvs === "object" && sourceObj.dvs !== null){
 
 						if(sourceObj.vpp.hasOwnProperty("mac_dest") && sourceObj.vpp.hasOwnProperty("url")
-						&& sourceObj.ovs.hasOwnProperty("mac_dest") && sourceObj.ovs.hasOwnProperty("url") && sourceObj.dvs.hasOwnProperty("mac_dest") && sourceObj.dvs.hasOwnProperty("url")){
+						&& sourceObj.ovs.hasOwnProperty("mac_dest") && sourceObj.ovs.hasOwnProperty("url")
+							&& sourceObj.dvs.hasOwnProperty("mac_dest") && sourceObj.dvs.hasOwnProperty("url")){
 							// todo: validation
 
 							resultObj = angular.copy(sourceObj);

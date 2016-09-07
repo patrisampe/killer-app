@@ -122,7 +122,7 @@
 						}
 						else if(tx_bps >  999999999){
 							globalStats["tx_bps_value"] = tx_bps;
-							globalStats["tx_bps_units"] = "gbituu/s";
+							globalStats["tx_bps_units"] = "gbit/s";
 							log.console('try 5');
 						}
 						log.console('try 1');
