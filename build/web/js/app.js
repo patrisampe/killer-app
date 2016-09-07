@@ -215,12 +215,14 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 			flowsNumber: null,
 			// status of traffic generator (running/stopped)
 			tgStatus: {
-				"vpp": null,
-				"ovs": null
+				"vpp":null,
+				"ovs":null,
+				"dvs":null
 			},
 			tgStats: {
 				"vpp": null,
-				"ovs": null
+				"ovs": null,
+				"dvs": null
 			},
 			// current ctrl
 			currentCtrl: null,
@@ -342,13 +344,15 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 
 			if(typeof sourceObj === "object" && sourceObj !== null){
 
-				if(sourceObj.hasOwnProperty("vpp") && sourceObj.hasOwnProperty("ovs")){
+				if(sourceObj.hasOwnProperty("vpp") && sourceObj.hasOwnProperty("ovs") && sourceObj.hasOwnProperty("dvs")){
 
 					if(typeof sourceObj.vpp === "object" && sourceObj.vpp !== null
-					&& typeof sourceObj.ovs === "object" && sourceObj.ovs !== null && typeof sourceObj.dvs === "object" && sourceObj.dvs !== null){
+					&& typeof sourceObj.ovs === "object" && sourceObj.ovs !== null
+						&& typeof sourceObj.dvs === "object" && sourceObj.dvs !== null){
 
 						if(sourceObj.vpp.hasOwnProperty("mac_dest") && sourceObj.vpp.hasOwnProperty("url")
-						&& sourceObj.ovs.hasOwnProperty("mac_dest") && sourceObj.ovs.hasOwnProperty("url") && sourceObj.dvs.hasOwnProperty("mac_dest") && sourceObj.dvs.hasOwnProperty("url")){
+						&& sourceObj.ovs.hasOwnProperty("mac_dest") && sourceObj.ovs.hasOwnProperty("url")
+							&& sourceObj.dvs.hasOwnProperty("mac_dest") && sourceObj.dvs.hasOwnProperty("url")){
 							// todo: validation
 
 							resultObj = angular.copy(sourceObj);
@@ -811,7 +815,7 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 						}
 						else if(tx_bps >  999999999){
 							globalStats["tx_bps_value"] = tx_bps;
-							globalStats["tx_bps_units"] = "gbituu/s";
+							globalStats["tx_bps_units"] = "gbit/s";
 							log.console('try 5');
 						}
 						log.console('try 1');
