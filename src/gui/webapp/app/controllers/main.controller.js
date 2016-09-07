@@ -7,7 +7,7 @@
 		$scope.redirectUrl = redirectUrl;
 		$scope.init = init;
 
-
+		$scope.show3=false;
 
 
 		$scope.init();
