@@ -789,11 +789,11 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 
 						// bits
 					    if(tx_bps >  999999999){
-							globalStats["tx_bps_value"] = tx_bps/1000000000;
+							globalStats["tx_bps_value"] = tx_bps
 							globalStats["tx_bps_units"] = "gbit/s";
 							log.console('try 5');
 						}
-						if(tx_bps < 1000){
+						else if(tx_bps < 1000){
 							globalStats["tx_bps_value"] = tx_bps;
 							globalStats["tx_bps_units"] = "bit/s";
 
@@ -801,16 +801,16 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 						}
 						// kbits
 						else if(tx_bps >= 1000 && tx_bps < 1000000){
-							globalStats["tx_bps_value"] = tx_bps/1000;
+							globalStats["tx_bps_value"] = tx_bps;
 							globalStats["tx_bps_units"] = "kbit/s";
 							log.console('try 3');
 						}
 						else if(tx_bps >= 1000000 && tx_bps < 1000000000){
-							globalStats["tx_bps_value"] = tx_bps/1000000;
+							globalStats["tx_bps_value"] = tx_bps;
 							globalStats["tx_bps_units"] = "mbit/s";
 						}
 						else if(tx_bps >  999999999){
-							globalStats["tx_bps_value"] = tx_bps/1000000000;
+							globalStats["tx_bps_value"] = tx_bps;
 							globalStats["tx_bps_units"] = "gbituu/s";
 							log.console('try 5');
 						}
