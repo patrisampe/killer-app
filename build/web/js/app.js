@@ -792,33 +792,23 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 
 
 						// bits
-					    if(tx_bps >  999999999){
-							globalStats["tx_bps_value"] = tx_bps;
-							globalStats["tx_bps_units"] = "gbit/s";
-							log.console('try 5');
-						}
-						else if(tx_bps < 1000){
+						if(tx_bps < 1000){
 							globalStats["tx_bps_value"] = tx_bps;
 							globalStats["tx_bps_units"] = "bit/s";
-
-							log.console('try 2');
 						}
 						// kbits
 						else if(tx_bps >= 1000 && tx_bps < 1000000){
-							globalStats["tx_bps_value"] = tx_bps;
+							globalStats["tx_bps_value"] = tx_bps/1000;
 							globalStats["tx_bps_units"] = "kbit/s";
-							log.console('try 3');
 						}
 						else if(tx_bps >= 1000000 && tx_bps < 1000000000){
-							globalStats["tx_bps_value"] = tx_bps;
+							globalStats["tx_bps_value"] = tx_bps/1000000;
 							globalStats["tx_bps_units"] = "mbit/s";
 						}
-						else if(tx_bps >  999999999){
-							globalStats["tx_bps_value"] = tx_bps;
+						else if(tx_bps >= 1000000000){
+							globalStats["tx_bps_value"] = tx_bps/1000000000;
 							globalStats["tx_bps_units"] = "gbit/s";
-							log.console('try 5');
 						}
-						log.console('try 1');
 
 					}
 					else if(data.result.status == 'stopped'){
@@ -1007,9 +997,9 @@ As the Object it may have a boolean property allowToLogInConsole, which determin
 			$window.open(url, newTab ? "_blank" : "");
 
 			// fixme: make dynamic
+
 			SharedDataService.data.restBaseUrls.vpp = "http://localhost:5000";
 			SharedDataService.data.restBaseUrls.ovs = "http://localhost:6000";
-
 			<!-- patricia: add dvs -->
 			SharedDataService.data.restBaseUrls.dvs = "http://localhost:7000";
 

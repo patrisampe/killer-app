@@ -35,9 +35,9 @@
 			$window.open(url, newTab ? "_blank" : "");
 
 			// fixme: make dynamic
+
 			SharedDataService.data.restBaseUrls.vpp = "http://localhost:5000";
 			SharedDataService.data.restBaseUrls.ovs = "http://localhost:6000";
-
 			<!-- patricia: add dvs -->
 			SharedDataService.data.restBaseUrls.dvs = "http://localhost:7000";
 
